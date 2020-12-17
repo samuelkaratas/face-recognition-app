@@ -3,16 +3,17 @@ import React from "react";
 import { View, Image, Text, StyleSheet } from "react-native";
 
 import { useSelector } from "react-redux";
-import { selectImage } from "../store/image-selectors";
+import { selectImage, selectName } from "../store/image-selectors";
 
 const SuccessScreen = () => {
   const imageUri = useSelector(selectImage);
+  const name = useSelector(selectName);
   return (
     <View
       style={{ flex: 1, alignItems: "center", justifyContent: "flex-start" }}
     >
       <Image source={{ uri: imageUri }} style={styles.image} />
-      <Text style={styles.name}>Samuel Karatas</Text>
+      <Text style={styles.name}>{name}</Text>
     </View>
   );
 };

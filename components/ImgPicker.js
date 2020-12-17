@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setImage } from "../store/image-actions";
 import { selectImage } from "../store/image-selectors";
 
+import * as FileSystem from "expo-file-system";
+
 export default function ImgPicker() {
   const dispatch = useDispatch();
   const imageUri = useSelector(selectImage);
@@ -50,7 +52,7 @@ export default function ImgPicker() {
       quality: 1,
     });
 
-    console.log(result);
+    console.log(result)
 
     if (!result.cancelled) {
       //setImage(result.uri);
@@ -68,6 +70,8 @@ export default function ImgPicker() {
       aspect: [16, 9],
       quality: 0.5,
     });
+
+    //console.log(image);
 
     //setImage(image.uri);
     dispatch(setImage(image.uri));
